@@ -1,0 +1,62 @@
+{
+  "__sim_model_info__": {
+    "__name__": "sample_pipeline",
+    "__date__": "Aug 08 2020",
+    "__author__": "Armin Zare Zadeh",
+    "__rev__": "0.1",
+    "__desc__": "Sample Simulation Model for an Adder"
+  },
+  "__general__": {
+    "__paket_len__": 8,
+    "__num_of_paket__": 1,
+    "__data_file_name__": "C:\\data\\vec_src.data"
+  },
+  "__processors__": {
+    "rand_vec": {
+      "__proc_type__": "RAND_VEC_GEN",
+      "__out_data_type__": "UINT8",
+      "__out_vector_size__": 8,
+      "__trig_start__": false,
+      "__adjacency_connection_to__": {"1":["vec_src1", "1"], "2":["vec_src2", "2"]},
+      "__start_in__": 0,
+      "__end_in__": 1,
+      "__num_in__": 8
+    },
+    "vec_src1": {
+      "__proc_type__": "SRC_VEC_PROC",
+      "__out_data_type__": "UINT8",
+      "__out_vector_size__": 8,
+      "__trig_start__": true,
+      "__adjacency_connection_to__": {"1":["adder", "NewData", "In1"], "2":["logger", "", ""]},
+      "__repeat__": false,
+      "__vlen__": 8
+    },
+    "vec_src2": {
+      "__proc_type__": "SRC_VEC_PROC",
+      "__out_data_type__": "UINT8",
+      "__out_vector_size__": 8,
+      "__trig_start__": true,
+      "__adjacency_connection_to__": {"1":["adder", "NewData", "Proc"], "2":["logger", "", ""]},
+      "__repeat__": false,
+      "__vlen__": 8
+    },
+    "adder": {
+      "__proc_type__": "ADDER_PROC",
+      "__out_data_type__": "UINT8",
+      "__out_vector_size__": 8,
+      "__trig_start__": false,
+      "__adjacency_connection_to__": {"1":["vec_sink", "NewData", "Proc"], "2":["logger", "", ""]}
+    },
+    "vec_sink": {
+      "__proc_type__": "SINK_VEC_PROC",
+      "__in_data_type__": "UINT8",
+      "__out_data_type__": "UINT8",
+      "__out_vector_size__": 8,
+      "__trig_start__": false,
+      "__adjacency_connection_to__": {"1":["logger", "", ""]}
+    },
+    "logger": {
+      "__proc_type__": "LOGGER"
+    }
+  }
+}
